@@ -26,7 +26,7 @@ func readInput(path string) []string {
 // Iterates over array, parses each entry string as float64.
 // Conversion from float64 to int removes floating points, essentially rounding "down"
 // Gets total fuel usage
-func getFuelUsage(input []string) {
+func getFuelUsage(input []string) (int, int) {
 	// Part 1 Result
 	initialSum := 0
 	// Part 2 Result
@@ -51,16 +51,28 @@ func getFuelUsage(input []string) {
 		}
 	}
 
-	fmt.Println("Part 1", initialSum)
-	fmt.Println("Part 2", totalSum)
+	return initialSum, totalSum
 }
 
 func calculateUsage(value float64) int {
 	return int(value/3) - 2
 }
 
+func validateInputs() {
+	testData := []string{"100756"}
+	// validInitial, validSecondary
+	initial, total := getFuelUsage(testData)
+
+	if initial != 33583 && total != 50346 {
+		panic("Invalid Output")
+	}
+
+}
+
 func main() {
 	input := readInput("./input.txt")
 
-	getFuelUsage(input)
+	validateInputs()
+	initial, total := getFuelUsage(input)
+	fmt.Println("Initial Fuel Requirement", initial, "\nTotal Fuel Requirement", total)
 }

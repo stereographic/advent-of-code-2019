@@ -49,9 +49,9 @@ func checkMinimumDoubles(password string, passwordSlice []string, isPartTwo bool
 		}
 
 		return isValid
-	} else {
-		return true
 	}
+
+	return true
 }
 
 func checkProgressiveIncreases(passwordSlice []string) bool {
